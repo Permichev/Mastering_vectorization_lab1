@@ -1,12 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
-#include <omp.h>  // Подключение OpenMP
+#include <omp.h>
 
 using namespace std;
 
 // Функция для вывода матрицы
-void printMatrix(const vector<vector<double>>& matrix) {
+void printMatrix(const vector<vector<double> > & matrix) {
     int n = matrix.size();
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
@@ -17,7 +17,7 @@ void printMatrix(const vector<vector<double>>& matrix) {
 }
 
 // Функция для нахождения обратной матрицы
-bool inverseMatrix(vector<vector<double>>& matrix, vector<vector<double>>& inverse) {
+bool inverseMatrix(vector<vector<double> > & matrix, vector<vector<double> > & inverse) {
     int n = matrix.size();
     
     // Создаем единичную матрицу
@@ -63,8 +63,8 @@ int main() {
     cout << "Введите размерность матрицы: ";
     cin >> n;
 
-    vector<vector<double>> matrix(n, vector<double>(n));
-    vector<vector<double>> inverse(n, vector<double>(n));
+    vector<vector<double> > matrix(n, vector<double>(n));
+    vector<vector<double> > inverse(n, vector<double>(n));
 
     cout << "Введите элементы матрицы:\n";
     for (int i = 0; i < n; ++i) {
@@ -82,22 +82,3 @@ int main() {
 
     return 0;
 }
-
-
-/*
- Ключи компилятора:
- clang++ -O3 -march=armv8.4-a -fopenmp -ftree-vectorize inverse_matrix_optimized_omp.cpp -o inverse_matrix_optimized_omp
-
- 
- Объяснение изменений:
- 
- 1. Директива #pragma omp parallel for используется для
- распараллеливания циклов, которые могут быть выполнены независимо.
- Это улучшает производительность при работе с большими матрицами.
- 
- 2. Ключ -fopenmp включает поддержку OpenMP для многопоточности.
- 
- 3. Использованы дополнительные ключи векторизации -ftree-vectorize
- для автоматической оптимизации циклов.
- 
- */
