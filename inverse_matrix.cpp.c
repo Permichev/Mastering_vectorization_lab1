@@ -5,7 +5,7 @@
 using namespace std;
 
 // Функция для вывода матрицы
-void printMatrix(const vector<vector<double>>& matrix) {
+void printMatrix(const vector<vector<double> > & matrix) {
     int n = matrix.size();
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
@@ -16,7 +16,7 @@ void printMatrix(const vector<vector<double>>& matrix) {
 }
 
 // Функция для нахождения обратной матрицы
-bool inverseMatrix(vector<vector<double>>& matrix, vector<vector<double>>& inverse) {
+bool inverseMatrix(vector<vector<double> > & matrix, vector<vector<double> > & inverse) {
     int n = matrix.size();
     
     // Создаем единичную матрицу
@@ -59,8 +59,8 @@ int main() {
     cout << "Введите размерность матрицы: ";
     cin >> n;
 
-    vector<vector<double>> matrix(n, vector<double>(n));
-    vector<vector<double>> inverse(n, vector<double>(n));
+    vector<vector<double> > matrix(n, vector<double>(n));
+    vector<vector<double> > inverse(n, vector<double>(n));
 
     cout << "Введите элементы матрицы:\n";
     for (int i = 0; i < n; ++i) {
